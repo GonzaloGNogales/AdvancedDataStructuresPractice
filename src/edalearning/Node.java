@@ -5,6 +5,16 @@ public class Node<E> {
     private E elem;
     
     
+    public Node (Node n) {
+        this.elem = (E) n.getElem();
+        this.next = n.getNext();
+    } 
+    
+    public Node (E value, Node nxt) {
+        this.elem = value;
+        this.next = nxt;
+    }
+    
     public E getElem () {
         return this.elem;
     }
