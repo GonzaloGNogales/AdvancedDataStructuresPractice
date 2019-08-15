@@ -40,35 +40,34 @@ public class LinkedList<E> implements List<E> {
         this.size++;
     }
     
-    //Review
     @Override
     public void add (int index, E value) {
-        Node actual = new Node(this.head);
-        Node anterior = new Node(this.head);
-        int i = 0;
+        Node act = this.head;
+        Node pre = this.head;
         
-        if (index == i) {
+        if (index == 0) {
             Node newNode = new Node(value,this.head);
             this.head = newNode;
             this.size++;
         }
+        else if (index < this.size) {
+            act = act.getNext();
+            int cont = 1;
+            
+            while (cont < index) {
+                pre = pre.getNext();
+                act = act.getNext();
+                cont++;
+            }
+            
+            Node newNode = new Node(value,act);
+            pre.setNext(newNode);
+            this.size++;
+        }
         else {
-            actual = actual.getNext();
-            i++;
+            System.out.println("Out of size index.");
         }
         
-        while (i < size) {
-            if (index == i) {
-                Node newNode = new Node(value,actual);
-                anterior.setNext(newNode);
-                this.size++;
-            }
-            else {
-                anterior = anterior.getNext();
-                actual = actual.getNext();
-                i++;
-            }
-        }
     }
     
     @Override
@@ -79,41 +78,36 @@ public class LinkedList<E> implements List<E> {
         return elem;
     }
     
-    //Review
     @Override
     public E remove (int index) {
-        Node actual = new Node(this.head);
-        Node anterior = new Node(this.head);
-        Node posterior = new Node(this.head.getNext());
+        Node act = this.head;
+        Node pre = this.head;
+        Node post = this.head.getNext();
         E elem = null;
-        int i = 0;
-        boolean encontrado = false;
-        
-        if (index == i) {
-            elem = (E) actual.getElem();
+
+        if (index == 0) {
+            elem = (E) act.getElem();
             this.head = this.head.getNext();
-            encontrado = true;
-            this.size--;  
+            this.size--; 
+        }
+        else if (index < this.size) {
+            act = act.getNext();
+            post = post.getNext();
+            int cont = 1;
+            
+            while (cont < index) {
+                post = post.getNext();
+                pre = pre.getNext();
+                act = act.getNext();
+                cont++;
+            }
+            
+            elem = (E) act.getElem();
+            pre.setNext(post);
+            this.size--; 
         }
         else {
-            actual = actual.getNext();
-            posterior = posterior.getNext();
-            i++;
-        }
-        
-        while ((i < this.size) && !(encontrado)) {
-            if (index == i) {
-                elem = (E) actual.getElem();
-                anterior.setNext(posterior);
-                encontrado = true;
-                this.size--; 
-            }
-            else {
-                anterior = anterior.getNext();
-                actual = actual.getNext();
-                posterior = posterior.getNext();
-                i++;
-            }
+            System.out.println("Out of size index.");
         }
         
        
@@ -125,60 +119,67 @@ public class LinkedList<E> implements List<E> {
         return (E) this.head.getElem();
     }
     
-    //Review
     @Override
     public E get (int index) {
-        Node aux = new Node(this.head);
+        Node aux = this.head;
         E elem = null;
-        int i = 0;
-        
-        while (i < this.size) {
-            if (i == index) {
-                elem = (E) aux.getElem();
-            }
-            else {
+
+        if (index == 0) {
+            elem = (E) aux.getElem();
+        }
+        else if (index < this.size) {
+            aux = aux.getNext();
+            int cont = 1;
+            
+            while (cont < index) {
                 aux = aux.getNext();
-                i++;
+                cont++;
             }
+            
+            elem = (E) aux.getElem();
+        }
+        else {
+            System.out.println("Out of size index.");
         }
         
         return elem;
+        
     }
     
     @Override
     public int search (E value) {
         Node aux = new Node(this.head);
         int i = 0;
-        int contador = 0;
+        int cont = 0;
         
         while (i < this.size) {
             if (value == aux.getElem()) {
-                contador++;
+                cont++;
             }
             
             aux = aux.getNext();
             i++;
         }
         
-        return contador;
+        return cont;
     }
     
     @Override
     public boolean contains (E value) {
         Node aux = new Node(this.head);
         int i = 0;
-        boolean contenido = false;
+        boolean contained = false;
         
         while (i < this.size) {
             if (value == aux.getElem()) {
-                contenido = true;
+                contained = true;
             }
             
             aux = aux.getNext();
             i++;
         }
         
-        return contenido;
+        return contained;
     }
     
     public void show () {
