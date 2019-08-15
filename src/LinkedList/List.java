@@ -1,4 +1,4 @@
-package edalearning;
+package LinkedList;
 
 public interface List<E> {
     

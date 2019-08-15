@@ -1,4 +1,5 @@
-package edalearning;
+package LinkedList;
+
 /**
  *
  * @author Gonzalo Gómez Nogales
@@ -51,9 +52,9 @@ public class EDALearning {
         l.remove();
         l.show();
         System.out.println();
-        
         System.out.println(l.search(7));
-        System.out.println(l.contains(7));  
+        System.out.println(l.contains(7));
+        
         System.out.println();
         System.out.println();
     }

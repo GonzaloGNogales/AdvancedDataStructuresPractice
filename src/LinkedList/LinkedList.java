@@ -1,4 +1,4 @@
-package edalearning;
+package LinkedList;
 
 public class LinkedList<E> implements List<E> {
     private Node head;

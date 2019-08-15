@@ -1,4 +1,4 @@
-package edalearning;
+package LinkedList;
 
 public class Node<E> {
     private Node next;
