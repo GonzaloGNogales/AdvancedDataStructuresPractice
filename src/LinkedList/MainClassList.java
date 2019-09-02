@@ -5,7 +5,7 @@ package LinkedList;
  * @author Gonzalo Gómez Nogales
  */
 
-public class EDALearning {
+public class MainClassList {
 
     public static void main(String[] args) {        
         LinkedList<Integer> l = new LinkedList<>();

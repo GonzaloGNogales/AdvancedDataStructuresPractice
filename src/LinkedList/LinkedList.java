@@ -39,7 +39,7 @@ public class LinkedList<E> implements List<E> {
 
         this.size++;
     }
-    
+
     @Override
     public void add (int index, E value) {
         Node act = this.head;
@@ -69,7 +69,7 @@ public class LinkedList<E> implements List<E> {
         }
         
     }
-    
+
     @Override
     public E remove() {
         E elem = (E) this.head.getElem();
